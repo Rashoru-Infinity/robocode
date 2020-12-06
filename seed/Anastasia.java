@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import seed.wave.*;
 
 public class Anastasia extends AdvancedRobot {
-	public static int BINS = 47;
+	public static int BINS = 69;
 	public static double surfStats[] = new double[BINS];
 	public Point2D.Double myLocation;
 	public Point2D.Double enemyLocation;
