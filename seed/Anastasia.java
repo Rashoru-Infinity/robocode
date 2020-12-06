@@ -4,6 +4,7 @@ import robocode.*;
 import robocode.util.Utils;
 import java.awt.geom.*;
 import java.util.ArrayList;
+import java.awt.*;
 
 import seed.wave.*;
 
@@ -259,11 +260,11 @@ public class Anastasia extends AdvancedRobot {
 		}
 	}
 
-	public void onPaint(java.awt.Graphics2D g) {
-		 g.setColor(java.awt.Color.red);
-		 for(int i = 0; i < Waves.size(); i++){
-			Wave w = (Wave)(Waves.get(i));
-			Point2D.Double center = w.fireLocation;
+	public void onPaint(Graphics2D g) {
+		for(int i = 0; i < Waves.size(); i++){
+			 g.setColor(java.awt.Color.red);
+			 Wave w = (Wave)(Waves.get(i));
+			 Point2D.Double center = w.fireLocation;
 			
 			int radius = (int)w.distanceTraveled;
 			
