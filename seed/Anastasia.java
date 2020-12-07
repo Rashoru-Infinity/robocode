@@ -20,11 +20,14 @@ public class Anastasia extends AdvancedRobot {
 
 	public static double _oppEnergy = 100.0;
 	
-	public static Rectangle2D.Double _fieldRect
-		= new java.awt.geom.Rectangle2D.Double(18, 18, 764, 564);
+	public static Rectangle2D.Double fieldRect = null;
 	public static double WALL_STICK = 160;
 	
 	public void run() {
+		if (fieldRect == null) {
+			fieldRect = new Rectangle2D.Double
+			(18, 18, getBattleFieldWidth()- 36, getBattleFieldHeight() - 36);
+		}
 		Waves = new ArrayList<Wave>();
 		surfDirections = new ArrayList<Integer>();
 		surfAbsBearings = new ArrayList<Double>();
@@ -217,7 +220,7 @@ public class Anastasia extends AdvancedRobot {
 	}
 
 	public double wallSmoothing(Point2D.Double botLocation, double angle, int orientation) {
-	    while (!_fieldRect.contains(project(botLocation, angle, 160))) {
+	    while (!fieldRect.contains(project(botLocation, angle, 160))) {
 	        angle += orientation*0.05;
 	    }
 	    return angle;
