@@ -10,6 +10,7 @@ import robocode.AdvancedRobot;
 import robocode.HitByBulletEvent;
 import robocode.Rules;
 import robocode.ScannedRobotEvent;
+import robocode.RoundEndedEvent;
 import robocode.util.Utils;
 import seed.dataset.BulletData;
 import seed.predmodel.BattleConfig;
@@ -60,6 +61,15 @@ public class Anastasia extends AdvancedRobot {
 		do {
 			turnRadarRightRadians(java.lang.Double.POSITIVE_INFINITY);
 		} while (true);
+	}
+	
+	public void onRoundEnded(RoundEndedEvent e) {
+		myBulletPower = 2.0;
+		enmBulletPower = 2.0;
+		System.out.println("===Weight===");
+		model.printWeight();
+		System.out.println("===MSE===");
+		model.printMSE();
 	}
 
 	public void onScannedRobot(ScannedRobotEvent e) {
@@ -146,12 +156,9 @@ public class Anastasia extends AdvancedRobot {
 				model.addSample(activeBullet.get(x).getBullet(enemyLocation.getX(), enemyLocation.getY()));
 				activeBullet.remove(x);
 				x--;
-				model.printWeight();
-				model.printMSE();
 			}
 		}
 		model.updateModel();
-		
 	}
 
 	public Wave getClosestSurfableWave() {
